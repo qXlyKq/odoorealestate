@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_university_classes_tree" model="ir.ui.view">
+        <field name="name">university.classes.tree</field>
+        <field name="model">university.classes</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="year_id" />
+            </tree>
+        </field>
+    </record>
+    <record id="view_university_classes_form" model="ir.ui.view">
+        <field name="name">university.classes.form</field>
+        <field name="model">university.classes</field>
+        <field name="arch" type="xml">
+            <form>
+                <widget
+                    name="web_ribbon"
+                    title="Archived"
+                    bg_color="bg-danger"
+                    invisible="active"
+                />
+                <group col="4">
+                    <field name="name" />
+                    <field name="year_id" />
+                    <field name="active" invisible="1" />
+                </group>
+            </form>
+        </field>
+    </record>
+    <record id="view_university_classes_search" model="ir.ui.view">
+        <field name="model">university.classes</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="year_id"/>
+                <separator />
+                <filter
+                    string="Archived"
+                    name="inactive"
+                    domain="[('active', '=', False)]"
+                />
+                <group name="groupby">
+                    <filter
+                        name="learning_year"
+                        string="Learnng year"
+                        context="{'group_by': 'year_id'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="university_classes_action" model="ir.actions.act_window">
+        <field name="name">University classes</field>
+        <field name="res_model">university.classes</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_university_classes_tree" />
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+    <menuitem
+        id="menu_university_classes_menu_root"
+        name="University"
+        web_icon="kntu_university,static/description/icon.png"
+        sequence="1"
+    />
+    <menuitem id="menu_university_classes_menu_classes"
+              name="Classes"
+              parent="kntu_university.menu_university_classes_menu_root"
+              action="kntu_university.university_classes_action"
+              sequence="1"/>
+</odoo>

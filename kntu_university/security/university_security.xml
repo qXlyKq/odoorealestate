@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo noupdate="1">
+        <record id="university_category" model="ir.module.category">
+            <field name="name">University</field>
+        </record>
+
+        <record id="kntu_university.university_manager" model="res.groups">
+            <field name="name">University manager</field>
+            <field name="category_id" ref="university_category"/>
+        </record>
+</odoo>

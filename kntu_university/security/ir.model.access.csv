@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_university_classes_university_manager,university_classes.university_manager,model_university_classes,kntu_university.university_manager,1,1,1,1
+access_university_year_university_manager,university_year.university_manager,model_university_year,kntu_university.university_manager,1,1,1,1
+access_university_plan_university_manager,university_plan.university_manager,model_university_plan,kntu_university.university_manager,1,1,1,1
